@@ -29,7 +29,7 @@ class User extends Authenticatable
         $this->attributes['password'] = env('PASSWORD__HASH') ? bcrypt($newPassword): $newPassword;
     }
 
-    public function getMsisdnAttribute()
+    public function getFormattedMsisdnAttribute()
     {
         $msisdn = $this->attributes['msisdn'];
         

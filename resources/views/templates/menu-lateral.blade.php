@@ -7,7 +7,7 @@
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="{{ route('user.list') }}">
                 <div class="container-icon"><i class="fa fa-user-plus"></i></div>
                 <h3>Listagem de usuários</h3>
             </a>

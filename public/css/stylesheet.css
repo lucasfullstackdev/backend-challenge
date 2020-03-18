@@ -233,3 +233,11 @@ table thead tr td { height: 60px; }
 
 table tbody {}
 table tbody tr td { height: 20px; }
+
+
+.btn-remove { background-color: #dc3545 !important; }
+.btn-remove:hover {
+    background-color: var( --secondaryColor ) !important;
+    border-color: #dc3545 !important;
+    color: #dc3545 !important;
+}

@@ -49,6 +49,15 @@ class UsersController extends Controller
         ]);
     }
 
+    public function list()
+    {
+        $users = $this->repository->all();
+
+        return view('user.list', [
+            'users' => $users
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -61,16 +70,13 @@ class UsersController extends Controller
     public function store(UserCreateRequest $request)
     {
         $request = $this->service->store($request->all());
-        $usuario = $request['success'] ? $request['data'] : null;
-
+        
         session()->flash('success', [
             'success' => $request['success'],
             'message' => $request['message']
         ]);
-
-        return view('user.index', [
-            'usuario' => $usuario
-        ]);
+        
+        return redirect()->route('user.index');
     }
 
     /**
@@ -161,16 +167,13 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $deleted = $this->repository->delete($id);
+        $request = $this->service->destroy($id);
 
-        if (request()->wantsJson()) {
+        session()->flash('success', [
+            'success' => $request['success'],
+            'message' => $request['message']
+        ]);
 
-            return response()->json([
-                'message' => 'User deleted.',
-                'deleted' => $deleted,
-            ]);
-        }
-
-        return redirect()->back()->with('message', 'User deleted.');
+        return redirect()->route('user.list');
     }
 }
