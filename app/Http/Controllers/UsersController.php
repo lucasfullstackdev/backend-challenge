@@ -42,11 +42,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = $this->repository->all();
-
-        return view('user.index', [
-            'users' => $users
-        ]);
+        return view('user.index');
     }
 
     public function list()
