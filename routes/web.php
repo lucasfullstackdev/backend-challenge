@@ -22,10 +22,11 @@ Route::get('/cadastro', ['uses' => 'Controller@cadastrar']);
  */
 Route::get('/login', ['uses' => 'Controller@fazerLogin']);
 Route::post('/login', ['as' => 'user.login', 'uses' => 'DashboardController@auth']);
-
 Route::get('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardController@index']);
 
 Route::get('/user', ['as' => 'user.index', 'uses' => 'UsersController@index']);
+
+Route::resource('user', 'UsersController');
 
 Route::get('/recuperar-senha', ['uses' => 'Controller@recuperarSenha']);
 Route::post('/recuperar-senha', ['as' => 'user.recuperar-senha', 'uses' => 'Controller@recuperarSenha']);

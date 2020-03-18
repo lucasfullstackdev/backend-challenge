@@ -1,7 +1,7 @@
 <nav id="menu-lateral">
     <ul>
         <li>
-            <a href="">
+            <a href="{{ route('user.index') }}">
                 <div class="container-icon"><i class="fa fa-cubes"></i></div>
                 <h3>Cadastro de usuários</h3>
             </a>

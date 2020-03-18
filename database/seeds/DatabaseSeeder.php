@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::create([
-            'msisdn'   => '+5588998052210',
+            'msisdn'   => '+5588998052285',
             'name'     => 'Primeiro registro de teste',
             'password' => env('PASSWORD__HASH') ? bcrypt('123456'): '123456'
         ]);

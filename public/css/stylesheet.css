@@ -208,3 +208,28 @@ form label span {
     padding-bottom: 5px;
     font-size: 15px;
 }
+
+/**
+ * ===================================================================== +
+ * Stylesheet to Table
+ * ===================================================================== +
+ */
+
+table {
+    float: left;
+    width: 100%;
+
+    background: rgb(180,180,180);
+    border: 1px solid var( --primaryColor );
+
+    padding: 10px;
+    font: 400 .9em 'Arial';
+    color: #343a40;
+    background: var( --secondaryColor );
+}
+
+table thead { text-transform: uppercase; }
+table thead tr td { height: 60px; }
+
+table tbody {}
+table tbody tr td { height: 20px; }
