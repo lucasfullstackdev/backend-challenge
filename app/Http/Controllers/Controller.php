@@ -10,4 +10,23 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function homepage()
+    {
+        $variavelQualquer = "Lucas";
+
+        return view( 'welcome', [
+            "title" => $variavelQualquer
+        ]);
+    }
+
+    public function cadastrar()
+    {
+        echo 'Tela de cadastro';
+    }
+
+    public function fazerLogin()
+    {
+        echo 'Tela de login';
+    }
 }
