@@ -13,12 +13,14 @@
 
 :root {
     --primaryColor: rgb(0,100,150);
+    --secondaryColor: rgb(240,240,240);
     --contrastPrimaryColor: #fff;
 }
 
 /**
- * Tela de Login
- * =======================================================
+ * ===================================================================== +
+ * Stylesheet to login
+ * ===================================================================== +
  */
 #main-view {
     position: absolute;
@@ -81,4 +83,58 @@
     color: rgb(125,125,125);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 12px;
+}
+
+/**
+ * ===================================================================== +
+ * Stylesheet to menu lateral
+ * ===================================================================== +
+ */
+ #menu-lateral {
+    position: fixed;
+    float: left;
+
+    width: 200px;
+    height: 100%;
+
+    background-color: var( --secondaryColor );
+    border-right: 1px solid #e9e9e9;
+    box-shadow: 0 0 15px rgba(0,0,0,.15);
+ }
+
+#menu-lateral ul,
+#menu-lateral ul li {
+    float: left;
+    width: 100%;
+    height: 40px;
+
+    border-bottom: 1px solid var( --primaryColor );
+    text-align: center;
+}
+
+#menu-lateral ul li a {
+    float: left;
+    color: #343a40;
+    width: 100%;
+    height: 100%;
+}
+
+#menu-lateral ul li a .container-icon {
+    float: left;
+    height: 40px;
+    width: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#menu-lateral ul li a h3 {
+    float: left;
+    width: calc( 100% - 40px );
+    line-height: 40px;
+
+    font-size: 13px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: var( --primaryColor );
 }
