@@ -33,4 +33,9 @@ class Controller extends BaseController
     {
         return view('user.login');
     }
+
+    public function recuperarSenha()
+    {
+        return view('user.recuperar-senha');
+    }
 }

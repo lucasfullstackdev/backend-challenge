@@ -17,12 +17,12 @@ class CreateUsersTable extends Migration
 	{
 		Schema::create('users', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('msisdn', 11)->unique();
+			$table->string('msisdn', 14)->unique();
 			$table->string('name', 70);
-			$table->string('password', 123456)->nullalble();
+			$table->string('password', '1234')->nullalble();
 
 			$table->string('access_level')->default('free');
-
+			
 			$table->rememberToken();
 			$table->timestamps();
 			$table->softDeletes();
