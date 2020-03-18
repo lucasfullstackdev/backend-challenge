@@ -15,7 +15,9 @@
 <body>
     @include('templates.menu-lateral')
 
-    @yield('conteudo-view')
+    <section id="conteudo-view">
+        @yield('conteudo-view')
+    </section>
 
     @yield('js-view')
 </body>

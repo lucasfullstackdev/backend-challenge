@@ -25,5 +25,7 @@ Route::post('/login', ['as' => 'user.login', 'uses' => 'DashboardController@auth
 
 Route::get('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardController@index']);
 
+Route::get('/user', ['as' => 'user.index', 'uses' => 'UsersController@index']);
+
 Route::get('/recuperar-senha', ['uses' => 'Controller@recuperarSenha']);
 Route::post('/recuperar-senha', ['as' => 'user.recuperar-senha', 'uses' => 'Controller@recuperarSenha']);

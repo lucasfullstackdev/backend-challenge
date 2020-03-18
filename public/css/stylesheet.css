@@ -57,23 +57,6 @@
     margin-bottom: 10px;
 }
 
-#main-view-container form input {
-    width: 100%;
-    height: 35px;
-
-    border: 1px solid rgb(180,180,180);
-    
-    margin: 5px 0px 5px 0px;
-    padding-left: 10px;
-}
-
-#main-view-container form input[type=submit] {
-    background-color: var( --primaryColor );
-    color: var( --contrastPrimaryColor );
-
-    cursor: pointer;
-}
-
 #main-view-container form div {
     text-align: center;
     margin-top: 20px;
@@ -100,6 +83,8 @@
     background-color: var( --secondaryColor );
     border-right: 1px solid #e9e9e9;
     box-shadow: 0 0 15px rgba(0,0,0,.15);
+
+    z-index: 1;
  }
 
 #menu-lateral ul,
@@ -137,4 +122,89 @@
     font-size: 13px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: var( --primaryColor );
+}
+
+#menu-lateral ul li:hover a .container-icon { color: var( --primaryColor ); }
+
+#conteudo-view {
+    right: 0px;
+    position: fixed;
+    width: calc( 100% - 200px);
+    height: 100%;
+    background-color: var( --secondaryColor );
+    padding: 20px;
+    z-index: -2;
+}
+
+
+/**
+ * ===================================================================== +
+ * Stylesheet Page Title
+ * ===================================================================== +
+ */
+.title-container {
+    padding: 10px 20px;
+}
+
+.title-container h3 { font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 18px; }
+
+.title-container hr {
+    margin-top: 5px;
+    width: 100%;
+    height: 1px;
+    background: rgb(180,180,180);
+}
+
+
+/**
+ * ===================================================================== +
+ * Stylesheet to Default Form
+ * ===================================================================== +
+ */
+form input,
+form select {
+    float: left;
+    width: 100%;
+    height: 35px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+    margin: 5px 0px 5px 0px;
+    padding-left: 10px;
+
+    border: 1px solid rgb(180,180,180);
+    border-radius: 5px;
+}
+
+form input[type=submit] {
+    background-color: var( --primaryColor );
+    color: var( --contrastPrimaryColor );
+
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+form input[type=submit]:hover {
+    background-color: var( --contrastPrimaryColor );
+    color: var( --primaryColor );
+
+    border: 1px solid var( --primaryColor );
+    transition: all 0.3s ease-in-out;
+}
+
+form label {
+    float: left;
+    width: 49%;
+
+    height: 45px;
+    padding: 7px 15px;
+
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+form label span {
+    color: gray;
+
+    padding-bottom: 5px;
+    font-size: 15px;
 }
