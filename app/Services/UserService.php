@@ -49,6 +49,20 @@ class UserService
         }
     }
 
+    public function upgrade($id)
+    {
+        $user = $this->repository->find($id);
+        $data = [
+            'msisdn'        => $user->msisdn,
+            'name'          => $user->name,
+            'access_level'  => 'premium',
+            'password'      => $user->password,
+            'external_id'   => $user->id
+        ];
+
+        $this->repository->update($data, $id);
+    }
+
     public function destroy($user_id){
         try {
             $this->repository->delete($user_id);

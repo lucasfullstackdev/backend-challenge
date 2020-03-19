@@ -54,6 +54,18 @@ class ApiRequest
         return $this->sendRequest('PUT', $this->baseURI . "/" . $apiUserID, $data);
     }
 
+    public function upgradeUser($id)
+    {
+        $apiUserID = $this->getUserByID($id);
+        $apiUserID = $apiUserID->data->id;
+
+        $baseURI = $this->baseURI . "/" . $apiUserID . "/upgrade";
+
+        $response = $this->client->request( 'PUT', $baseURI );
+        
+        return json_decode( $response->getBody()->getContents() );
+    }
+
     private function sendRequest($method, $baseURI, $data)
     {
         $response = $this->client->request( $method, $baseURI, [

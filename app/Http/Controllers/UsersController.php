@@ -148,6 +148,15 @@ class UsersController extends Controller
         return redirect()->route('user.list');
     }
 
+    public function upgrade($id)
+    {
+        $this->service->upgrade($id);
+
+        $client = $client= new ApiRequest($this->repository);
+        $upgrade = $client->upgradeUser($id);
+
+        return redirect()->route('user.list');
+    }
 
     /**
      * Remove the specified resource from storage.

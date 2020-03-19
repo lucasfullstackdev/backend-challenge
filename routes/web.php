@@ -31,6 +31,7 @@ Route::get('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardControll
 Route::resource('user', 'UsersController');
 Route::get('/users', ['as' => 'user.list', 'uses' => 'UsersController@list']);
 Route::get('/list', ['as' => 'user.index', 'uses' => 'UsersController@index']);
+Route::get('/users/{id}/upgrade', [ 'as' => 'user.upgrade', 'uses' => 'UsersController@upgrade' ]);
 
 /** ============================================= */
 Route::get('/recuperar-senha', ['uses' => 'Controller@recuperarSenha']);
