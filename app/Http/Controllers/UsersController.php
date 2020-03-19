@@ -47,6 +47,11 @@ class UsersController extends Controller
 
     public function list()
     {
+        // Headers de homologação:
+        // Authorization: Bearer aSE1gIFBKbBqlQmZOOTxrpgPKgQkgshbLnt1NS3w
+        // service-id: qualifica
+        // app-users-group-id: 20
+
         $users = $this->repository->all();
 
         return view('user.list', [
