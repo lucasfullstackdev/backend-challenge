@@ -20,8 +20,8 @@ class User extends Authenticatable
      */
     public    $timestamps = true;
     protected $table      = 'users';
-    protected $fillable   = ['msisdn', 'name', 'access_level'];
-    protected $hidden     = ['password', 'remember_token'];
+    protected $fillable   = ['msisdn', 'name', 'access_level', 'password'];
+    protected $hidden     = ['remember_token'];
     // protected $casts = ['email_verified_at' => 'datetime'];
 
     public function setPasswordAttribute($newPassword)
@@ -33,7 +33,7 @@ class User extends Authenticatable
     {
         $msisdn = $this->attributes['msisdn'];
         
-        $msisdn = "(" . substr( $msisdn, 0, 3 ) . ") (" . substr($msisdn, 3, 2) . ") " . substr($msisdn, 5, 1) . "." . substr($msisdn, 6, 4) . "-" . substr($msisdn, 10, 4);
+        $msisdn =substr( $msisdn, 0, 3 ) . " (" . substr($msisdn, 3, 2) . ") " . substr($msisdn, 5, 1) . "." . substr($msisdn, 5, 4) . "-" . substr($msisdn, 9, 4);
     
         return $msisdn;
     }

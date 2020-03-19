@@ -32,10 +32,22 @@ class UserService
         } catch (\Exception $e) {
             return [ 'success' => false, 'message' => $e->getMessage() ];
         }
-
     }
     
-    public function update(){}
+    public function update($data, $id){
+        try {
+            $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
+            $usuario = $this->repository->update($data, $id);
+
+            return [
+                'success' => true,
+                'message' => 'Usuário Atualizado',
+                'data'    => $usuario
+            ];
+        } catch (\Exception $e) {
+            return [ 'success' => false, 'message' => $e->getMessage() ];
+        }
+    }
 
     public function destroy($user_id){
         try {

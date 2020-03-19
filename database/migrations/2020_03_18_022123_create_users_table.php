@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
 			$table->increments('id');
 			$table->string('msisdn', 14)->unique();
 			$table->char('name', 70);
-			$table->string('password', 5)->nullable();
+			$table->string('password', 255)->nullable();
 
 			$table->string('access_level')->default('free');
 

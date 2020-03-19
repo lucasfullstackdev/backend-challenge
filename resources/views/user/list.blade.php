@@ -9,13 +9,14 @@
 @section('conteudo-view')
     @include('templates.others.title', [ 'title' => 'Gerenciamento de Usuários' ])
 
-    <table>
+    <table cellspacing="0" cellpadding="0">
         <thead>
             <tr>
                 <td>ID</td>
                 <td>Nome</td>
                 <td>Telefone</td>
                 <td>Nível de Acesso</td>
+                <td></td>
                 <td></td>
             </tr>
         </thead>
@@ -28,6 +29,7 @@
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->formatted_msisdn }}</td>
                     <td>{{ $row->access_level }}</td>
+                    <td><a href="{{ route('user.edit', $row->id ) }}">Editar</a></td>
                     <td>
                         {!! Form::open(['route' => ['user.destroy', $row->id], 'method' => 'DELETE']) !!}
                             {!! Form::submit('Remover', [ 'class' => 'btn-remove']) !!}
