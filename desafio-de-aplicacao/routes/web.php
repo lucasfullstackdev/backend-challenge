@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
  * Rotas para a tela de Login
  * =========================================================================
  */
-Route::get('/login', ['uses' => 'Controller@fazerLogin']);
-Route::post('/login', ['as' => 'user.login', 'uses' => 'DashboardController@auth']);
+Route::get('/', ['uses' => 'Controller@fazerLogin']);
+Route::post('/', ['as' => 'user.login', 'uses' => 'DashboardController@auth']);
 Route::get('/cadastro', ['as' => 'user.cadastro', 'uses' => 'Controller@cadastrar']);
 Route::get('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardController@index']);
 
