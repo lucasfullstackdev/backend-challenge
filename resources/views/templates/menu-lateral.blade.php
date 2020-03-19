@@ -12,6 +12,5 @@
                 <h3>Listagem de usuários</h3>
             </a>
         </li>
-        
     </ul>
 </nav>

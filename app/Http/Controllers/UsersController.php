@@ -13,6 +13,12 @@ use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
 use App\Services\UserService;
 
+// use GuzzleHttp\Exception\GuzzleException;
+// use GuzzleHttp\Client;
+// use GuzzleHttp\Psr7\Request;
+
+use App\Services\ApiRequest;
+
 /**
  * Class UsersController.
  *
@@ -47,11 +53,6 @@ class UsersController extends Controller
 
     public function list()
     {
-        // Headers de homologação:
-        // Authorization: Bearer aSE1gIFBKbBqlQmZOOTxrpgPKgQkgshbLnt1NS3w
-        // service-id: qualifica
-        // app-users-group-id: 20
-
         $users = $this->repository->all();
 
         return view('user.list', [
@@ -70,11 +71,16 @@ class UsersController extends Controller
      */
     public function store(UserCreateRequest $request)
     {
-        $request = $this->service->store($request->all());
-        
+        $store = $this->service->store($request->all());
+
+        $client= new ApiRequest($this->repository);
+        $client->insertUser($store['data']);
+
+        $user = $client->getUserByID($store['data']->id);
+
         session()->flash('success', [
-            'success' => $request['success'],
-            'message' => $request['message']
+            'success' => $store['success'],
+            'message' => $store['message']
         ]);
         
         return redirect()->route('user.index');

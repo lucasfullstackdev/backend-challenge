@@ -24,12 +24,13 @@ Route::get('/login', ['uses' => 'Controller@fazerLogin']);
 Route::post('/login', ['as' => 'user.login', 'uses' => 'DashboardController@auth']);
 Route::get('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardController@index']);
 
-/** ============================================= */
-Route::get('/user', ['as' => 'user.index', 'uses' => 'UsersController@index']);
-
-Route::get('/users', ['as' => 'user.list', 'uses' => 'UsersController@list']);
-
+/**
+ * Routes to sign in & list
+ * ===============================================
+ */
 Route::resource('user', 'UsersController');
+Route::get('/users', ['as' => 'user.list', 'uses' => 'UsersController@list']);
+Route::get('/list', ['as' => 'user.index', 'uses' => 'UsersController@index']);
 
 /** ============================================= */
 Route::get('/recuperar-senha', ['uses' => 'Controller@recuperarSenha']);
