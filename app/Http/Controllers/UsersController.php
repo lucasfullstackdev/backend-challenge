@@ -158,6 +158,16 @@ class UsersController extends Controller
         return redirect()->route('user.list');
     }
 
+    public function downgrade($id)
+    {
+        $this->service->downgrade($id);
+
+        $client = $client= new ApiRequest($this->repository);
+        $upgrade = $client->downgradeUser($id);
+
+        return redirect()->route('user.list');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

@@ -66,6 +66,18 @@ class ApiRequest
         return json_decode( $response->getBody()->getContents() );
     }
 
+    public function downgradeUser($id)
+    {
+        $apiUserID = $this->getUserByID($id);
+        $apiUserID = $apiUserID->data->id;
+
+        $baseURI = $this->baseURI . "/" . $apiUserID . "/downgrade";
+
+        $response = $this->client->request( 'PUT', $baseURI );
+        
+        return json_decode( $response->getBody()->getContents() );
+    }
+
     private function sendRequest($method, $baseURI, $data)
     {
         $response = $this->client->request( $method, $baseURI, [

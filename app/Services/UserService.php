@@ -63,6 +63,22 @@ class UserService
         $this->repository->update($data, $id);
     }
 
+    public function downgrade($id)
+    {
+        $user = $this->repository->find($id);
+        $data = [
+            'msisdn'        => $user->msisdn,
+            'name'          => $user->name,
+            'access_level'  => 'free',
+            'password'      => $user->password,
+            'external_id'   => $user->id
+        ];
+
+        $this->repository->update($data, $id);
+    }
+
+
+
     public function destroy($user_id){
         try {
             $this->repository->delete($user_id);
