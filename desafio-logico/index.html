@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Desafio Lógico</title>
+</head>
+<body>
+    <!-- Section que abrigará todo o sistema -->
+    <section id='main' class="flex-center">
+        <section id='main-container' class="">
+            
+            <!-- Menu de configuração -->
+            <section class="view top-view flex-center">
+                <div id='order-matrix-container'>
+                    <h1> Informe aqui a ordem da nova matriz </h1>
+                    <input type='text' id='order-matrix' maxlength="100" minlength="1" value='30' />
+                    <div id="buttons-container">
+                        <button id='btn-generate-matrix'> Gerar Matriz </button>
+                        <button id='btn-calculate'> Calcular </button>    
+                    </div>
+                </div>
+                <h1 id="result" class="flex-center">Resultado: <span></span> </h1>
+            </section>
+            <h3 class="info">Ao clicar em Calcular, nós geraremos uma matriz com valores aleatórios</h3>
+
+            <!-- Section que abrigará a matriz -->
+            <section class="view bottom-view">
+                <div id="matrix-container"><form></form></div>
+            </section>
+        </section>
+    </section>
+
+    <!-- Load Scripts: JQuery & Main  -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+</html>
