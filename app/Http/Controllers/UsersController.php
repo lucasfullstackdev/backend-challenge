@@ -72,7 +72,7 @@ class UsersController extends Controller
     public function store(UserCreateRequest $request)
     {
         $store = $this->service->store($request->all());
-
+        
         $client= new ApiRequest($this->repository);
         $client->insertUser($store['data']);
 

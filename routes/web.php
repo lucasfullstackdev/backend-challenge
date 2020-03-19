@@ -27,7 +27,8 @@ Route::get('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardControll
  * ===============================================
  */
 Route::resource('user', 'UsersController');
-Route::get('/users', ['as' => 'user.list', 'uses' => 'UsersController@list']);
-Route::get('/list', ['as' => 'user.index', 'uses' => 'UsersController@index']);
+Route::get('/list', ['as' => 'user.list', 'uses' => 'UsersController@list']);
+Route::get('/users', ['as' => 'user.index', 'uses' => 'UsersController@index']);
+
 Route::get('/users/{id}/upgrade', [ 'as' => 'user.upgrade', 'uses' => 'UsersController@upgrade' ]);
 Route::get('/users/{id}/downgrade', [ 'as' => 'user.downgrade', 'uses' => 'UsersController@downgrade' ]);

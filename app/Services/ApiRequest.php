@@ -21,6 +21,8 @@ class ApiRequest
         $this->repository  = $repository;
 
         $this->host = 'https://api2.mlearn.mobi/';
+        // $this->host = 'https://api.mlearn.mobi/';
+        
         $this->serviceID = 'qualifica';
         $this->authorization = 'Bearer aSE1gIFBKbBqlQmZOOTxrpgPKgQkgshbLnt1NS3w';
         $this->baseURI = $this->host . "integrator/" . $this->serviceID . "/users";
@@ -130,6 +132,10 @@ class ApiRequest
                 'external_id'   => $data->id
             ]
         ]);
+
+        $tst = json_decode( $response->getBody()->getContents() );
+
+        // dd( $tst );
 
         return json_decode( $response->getBody()->getContents() );
     }
