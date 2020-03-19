@@ -20,6 +20,8 @@ class UserService
 
     public function store($data)
     {
+        $data['password'] = env('PASSWORD__HASH') ? bcrypt($data['password']): $data['password'];
+
         try {
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
             $usuario = $this->repository->create($data);

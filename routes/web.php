@@ -13,19 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', ['uses' => 'Controller@homepage']);
-Route::get('/cadastro', ['as' => 'user.cadastro', 'uses' => 'Controller@cadastrar']);
-
 /**
- * Routes to user auth
- * ===============================================
+ * Rotas para a tela de Login
+ * =========================================================================
  */
 Route::get('/login', ['uses' => 'Controller@fazerLogin']);
 Route::post('/login', ['as' => 'user.login', 'uses' => 'DashboardController@auth']);
+Route::get('/cadastro', ['as' => 'user.cadastro', 'uses' => 'Controller@cadastrar']);
 Route::get('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardController@index']);
 
 /**
- * Routes to sign in & list
+ * Rotas para usuário
  * ===============================================
  */
 Route::resource('user', 'UsersController');
@@ -33,7 +31,3 @@ Route::get('/users', ['as' => 'user.list', 'uses' => 'UsersController@list']);
 Route::get('/list', ['as' => 'user.index', 'uses' => 'UsersController@index']);
 Route::get('/users/{id}/upgrade', [ 'as' => 'user.upgrade', 'uses' => 'UsersController@upgrade' ]);
 Route::get('/users/{id}/downgrade', [ 'as' => 'user.downgrade', 'uses' => 'UsersController@downgrade' ]);
-
-/** ============================================= */
-Route::get('/recuperar-senha', ['uses' => 'Controller@recuperarSenha']);
-Route::post('/recuperar-senha', ['as' => 'user.recuperar-senha', 'uses' => 'Controller@recuperarSenha']);

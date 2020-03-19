@@ -15,9 +15,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'msisdn'   => '+5588998052285',
             'name'     => 'Primeiro registro de teste',
-            'password' => env('PASSWORD__HASH') ? bcrypt('123456'): '123456'
+            'password' => '123456'
         ]);
-        
-        // $this->call(UsersTableSeeder::class);
     }
 }

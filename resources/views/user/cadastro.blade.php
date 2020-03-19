@@ -21,11 +21,9 @@
         {!! Form::close() !!}
         
         {!! Form::open(['route' => ['user.login'], 'method' => 'GET']) !!}
-        
-        <label>
-            {!! Form::submit('Voltar', [ 'class' => 'bg-danger']) !!}
-        </label>
-        
+            <label>
+                {!! Form::submit('Voltar', [ 'class' => 'bg-danger']) !!}
+            </label>
         {!! Form::close() !!}
         
     </section>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+// use Illuminate\Support\Facades\Hash;
+
 use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
@@ -20,11 +22,21 @@ class DashboardController extends Controller
         $this->validator  = $validator;
     }
 
+    /**
+     * Exibir a view dashboard -> Tela principal do sistema
+     * =========================================================================
+     */
     public function index()
     {
         return view('user.dashboard');
     }
 
+    /**
+     * Realizar a verificação das credenciais de acess
+     * Informar o erro em caso de Falha
+     * Redirecionar para a dashboard em caso de sucesso
+     * =========================================================================
+     */
     public function auth(Request $request)
     {
         $data = [
@@ -34,9 +46,13 @@ class DashboardController extends Controller
         
         try
         {
-
             if( env('PASSWORD__HASH') ){
-                Auth::attempt($data, false);
+                // $pass = bcrypt( $data['msisdn'] );
+                // $user = $this->repository->findWhere([ 'msisdn' => $request->get('username') ])->first();
+                // $tst = Auth::attempt( $data, false );
+                // dd( $tst );
+
+                // return redirect()->route( $user ? 'user.dashboard': 'user.login' );
             } else {
                 $user = $this->repository->findWhere([ 'msisdn' => $request->get('username') ])->first();
 
@@ -54,8 +70,6 @@ class DashboardController extends Controller
         {
             return $e->getMessage();
         }
-
-        dd($request->all());
     }
 
 }

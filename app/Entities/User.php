@@ -2,16 +2,16 @@
 
 namespace App\Entities;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Notifications\Notifiable;
 
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
     use SoftDeletes;
-    use Notifiable;
+    // use Notifiable;
 
     /****
      * =========================================================================== +
@@ -22,13 +22,20 @@ class User extends Authenticatable
     protected $table      = 'users';
     protected $fillable   = ['msisdn', 'name', 'access_level', 'password'];
     protected $hidden     = ['remember_token'];
-    // protected $casts = ['email_verified_at' => 'datetime'];
 
+    /**
+     * Realizar a criptografia ou não da senha informada
+     * =========================================================================
+     */
     public function setPasswordAttribute($newPassword)
     {
         $this->attributes['password'] = env('PASSWORD__HASH') ? bcrypt($newPassword): $newPassword;
     }
 
+    /**
+     * Formatar o campo [ msisdn ] para exibição
+     * =========================================================================
+     */
     public function getFormattedMsisdnAttribute()
     {
         $msisdn = $this->attributes['msisdn'];

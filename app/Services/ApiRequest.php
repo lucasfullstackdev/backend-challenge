@@ -7,7 +7,6 @@ use GuzzleHttp\Client;
 
 class ApiRequest
 {
-
     private $repository;
     private $client;
 
@@ -27,30 +26,50 @@ class ApiRequest
         $this->baseURI = $this->host . "integrator/" . $this->serviceID . "/users";
 
         $this->headers = [
-            'authorization' => $this->authorization,
-            'service-id'    => $this->serviceID,
-            'app-users-group-id' => 20
+            "authorization"       => $this->authorization,
+            "service-id"          => $this->serviceID,
+            "app-users-group-id"  => 20
         ];
 
         $this->client = new Client(['headers' => $this->headers]);
     }
 
+    /**
+     * @method: getUserByID
+     * Consultar o usuário na mLearn através da chave external_id
+     * =========================================================================
+     */
     public function getUserByID($id)
     {
         $response = $this->client->request('GET', $this->baseURI . "?external_id=" . $id);
         return json_decode( $response->getBody()->getContents() );
     }
 
+    /**
+     * @method: insertUser
+     * Inserir usuário na mLearn através da API
+     * =========================================================================
+     */
     public function insertUser($data)
     {
         return $this->sendRequest('POST', $this->baseURI, $data );
     }
 
+    /**
+     * @method: updateUser
+     * Atualizando usuário na mLearn através da API
+     * =========================================================================
+     */
     public function updateUser($data, $id)
     {
         return $this->sendRequest('PUT', $this->baseURI . "/" . $this->getApiUserId($id), $data);
     }
 
+    /**
+     * @method: updateUser
+     * Atualizando [upgrade] o nível de acesso do usuário na mLearn através da API
+     * =========================================================================
+     */
     public function upgradeUser($id)
     {
         $baseURI = $this->baseURI . "/" . $this->getApiUserId($id) . "/upgrade";
@@ -59,6 +78,11 @@ class ApiRequest
         return json_decode( $response->getBody()->getContents() );
     }
 
+    /**
+     * @method: downgradeUser
+     * Atualizando [downgrade] o nível de acesso do usuário na mLearn através da API
+     * =========================================================================
+     */
     public function downgradeUser($id)
     {
         $baseURI = $this->baseURI . "/" . $this->getApiUserId($id) . "/downgrade";
@@ -67,6 +91,11 @@ class ApiRequest
         return json_decode( $response->getBody()->getContents() );
     }
 
+    /**
+     * @method: destroyUser
+     * Removendo usuário na mLearn através da API
+     * =========================================================================
+     */
     public function destroyUser($id)
     {
         $baseURI = $this->baseURI . "/" . $this->getApiUserId($id);
@@ -75,11 +104,21 @@ class ApiRequest
         return json_decode( $response->getBody()->getContents() );
     }
 
+    /**
+     * @method: getApiUserId
+     * Buscando o Id do usuário correspondente na mLearn através da API
+     * =========================================================================
+     */
     private function getApiUserId($id)
     {
         return $this->getUserByID($id)->data->id;
     }
     
+    /**
+     * @method: sendRequest
+     * Enviando resquisições [ POST | PUT ] para mLearn através da API
+     * =========================================================================
+     */
     private function sendRequest($method, $baseURI, $data)
     {
         $response = $this->client->request( $method, $baseURI, [

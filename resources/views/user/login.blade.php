@@ -22,12 +22,12 @@
             
             {!! Form::submit('Entrar') !!}
            
-            <div>
+            {{-- <div>
                 {!! link_to_route( 'user.recuperar-senha', 'esqueci minha senha' ) !!}
-            </div>
+            </div> --}}
 
             <div>
-                {{ link_to_route( 'user.cadastro', 'ainda não sou possuo uma conta' ) }}
+                {{ link_to_route( 'user.cadastro', 'ainda não possuo uma conta' ) }}
             </div>
 
             {!! Form::close() !!}

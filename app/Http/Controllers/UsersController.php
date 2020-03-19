@@ -42,15 +42,19 @@ class UsersController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Exibir a view index -> Responsável pelo cadastro de usuário através 
+     * do menu lateral
+     * =========================================================================
      */
     public function index()
     {
         return view('user.index');
     }
 
+    /**
+     * Exibir a view list -> Responsável pela listagem de todos os usuários
+     * =========================================================================
+     */
     public function list()
     {
         $users = $this->repository->all();
@@ -61,13 +65,9 @@ class UsersController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  UserCreateRequest $request
-     *
-     * @return \Illuminate\Http\Response
-     *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     * Realizar a exclusão do usuário no Banco de Dados
+     * Enviar uma Request [ DELETE ] para a API da mLearn
+     * =========================================================================
      */
     public function store(UserCreateRequest $request)
     {
@@ -108,11 +108,8 @@ class UsersController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
+     * Exibir a view edit -> Responsável pela tela de atualização do usuário
+     * =========================================================================
      */
     public function edit($id)
     {
@@ -124,14 +121,9 @@ class UsersController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  UserUpdateRequest $request
-     * @param  string            $id
-     *
-     * @return Response
-     *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     * Realizar a atualização dos dados do usuário
+     * Enviar um request [ PUT ] para a api da mLearn
+     * =========================================================================
      */
     public function update(UserUpdateRequest $request, $id)
     {
@@ -148,6 +140,11 @@ class UsersController extends Controller
         return redirect()->route('user.list');
     }
 
+    /**
+     * Realizar o upgrade do nivel de acesso do usuário
+     * Enviar um request [ PUT ] para a api da mLearn
+     * =========================================================================
+     */
     public function upgrade($id)
     {
         $this->service->upgrade($id);
@@ -158,6 +155,11 @@ class UsersController extends Controller
         return redirect()->route('user.list');
     }
 
+    /**
+     * Realizar o downgrade do nivel de acesso do usuário
+     * Enviar um request [ PUT ] para a api da mLearn
+     * =========================================================================
+     */
     public function downgrade($id)
     {
         $this->service->downgrade($id);
@@ -168,12 +170,10 @@ class UsersController extends Controller
         return redirect()->route('user.list');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
+   /**
+     * Realizar a remoção do usuário
+     * Enviar um request [ DELETE ] para a api da mLearn
+     * =========================================================================
      */
     public function destroy($id)
     {
