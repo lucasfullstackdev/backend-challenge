@@ -48,19 +48,12 @@ class ApiRequest
 
     public function updateUser($data, $id)
     {
-        $apiUserID = $this->getUserByID($id);
-        $apiUserID = $apiUserID->data->id;
-
-        return $this->sendRequest('PUT', $this->baseURI . "/" . $apiUserID, $data);
+        return $this->sendRequest('PUT', $this->baseURI . "/" . $this->getApiUserId($id), $data);
     }
 
     public function upgradeUser($id)
     {
-        $apiUserID = $this->getUserByID($id);
-        $apiUserID = $apiUserID->data->id;
-
-        $baseURI = $this->baseURI . "/" . $apiUserID . "/upgrade";
-
+        $baseURI = $this->baseURI . "/" . $this->getApiUserId($id) . "/upgrade";
         $response = $this->client->request( 'PUT', $baseURI );
         
         return json_decode( $response->getBody()->getContents() );
@@ -68,16 +61,25 @@ class ApiRequest
 
     public function downgradeUser($id)
     {
-        $apiUserID = $this->getUserByID($id);
-        $apiUserID = $apiUserID->data->id;
-
-        $baseURI = $this->baseURI . "/" . $apiUserID . "/downgrade";
-
+        $baseURI = $this->baseURI . "/" . $this->getApiUserId($id) . "/downgrade";
         $response = $this->client->request( 'PUT', $baseURI );
         
         return json_decode( $response->getBody()->getContents() );
     }
 
+    public function destroyUser($id)
+    {
+        $baseURI = $this->baseURI . "/" . $this->getApiUserId($id);
+        $response = $this->client->request( 'DELETE', $baseURI );
+        
+        return json_decode( $response->getBody()->getContents() );
+    }
+
+    private function getApiUserId($id)
+    {
+        return $this->getUserByID($id)->data->id;
+    }
+    
     private function sendRequest($method, $baseURI, $data)
     {
         $response = $this->client->request( $method, $baseURI, [

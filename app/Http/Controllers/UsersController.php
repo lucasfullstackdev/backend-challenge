@@ -163,7 +163,7 @@ class UsersController extends Controller
         $this->service->downgrade($id);
 
         $client = $client= new ApiRequest($this->repository);
-        $upgrade = $client->downgradeUser($id);
+        $downgrade = $client->downgradeUser($id);
 
         return redirect()->route('user.list');
     }
@@ -178,6 +178,9 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $request = $this->service->destroy($id);
+
+        $client = $client= new ApiRequest($this->repository);
+        $destroy = $client->destroyUser($id);
 
         session()->flash('success', [
             'success' => $request['success'],
