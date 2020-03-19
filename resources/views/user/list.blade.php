@@ -23,16 +23,17 @@
         </thead>
 
         <tbody>
-
                 @foreach ($users as $row)
                 <tr>
                     <td>{{ $row->id }}</td>
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->formatted_msisdn }}</td>
                     <td>{{ $row->access_level }}</td>
+                    <td>
+                        <a href="{{ route('user.upgrade', $row->id ) }}">upgrade</a>
+                        <a href="{{ route('user.downgrade', $row->id ) }}">downgrade</a>
+                    </td>
                     <td><a href="{{ route('user.edit', $row->id ) }}">Editar</a></td>
-                    <td><a href="{{ route('user.upgrade', $row->id ) }}">upgrade</a></td>
-                    <td><a href="{{ route('user.downgrade', $row->id ) }}">downgrade</a></td>
                     <td>
                         {!! Form::open(['route' => ['user.destroy', $row->id], 'method' => 'DELETE']) !!}
                             {!! Form::submit('Remover', [ 'class' => 'btn-remove']) !!}

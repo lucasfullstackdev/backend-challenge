@@ -74,7 +74,7 @@ class UsersController extends Controller
         $store = $this->service->store($request->all());
 
         $client= new ApiRequest($this->repository);
-        $tst = $client->insertUser($store['data']);
+        $client->insertUser($store['data']);
 
         $user = $client->getUserByID($store['data']->id);
 
@@ -83,7 +83,7 @@ class UsersController extends Controller
             'message' => $store['message']
         ]);
         
-        return redirect()->route('user.index');
+        return back();
     }
 
     /**
@@ -138,7 +138,7 @@ class UsersController extends Controller
         $request = $this->service->update($request->all(), $id);
         
         $client= new ApiRequest($this->repository);
-        $tst = $client->updateUser( $request['data'], $id );
+        $client->updateUser( $request['data'], $id );
 
         session()->flash('success', [
             'success' => $request['success'],

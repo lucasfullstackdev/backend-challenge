@@ -22,7 +22,7 @@ class Controller extends BaseController
 
     public function cadastrar()
     {
-        echo 'Tela de cadastro';
+        return view('user.cadastro');
     }
 
     /**

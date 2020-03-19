@@ -14,16 +14,20 @@
             {!! Form::open(['route' => 'user.login', 'method' => 'post']) !!}
             
             <h2>Acesse o sistema</h2>
-            <label>
+            <label class='label-login'>
                 {!! Form::text('username', null, ['class' => 'input', 'placeholder' => 'Celular']) !!}
             </label>
             
             {!! Form::password('password', ['placeholder' => 'Senha']) !!}
             
             {!! Form::submit('Entrar') !!}
-            
+           
             <div>
                 {!! link_to_route( 'user.recuperar-senha', 'esqueci minha senha' ) !!}
+            </div>
+
+            <div>
+                {{ link_to_route( 'user.cadastro', 'ainda não sou possuo uma conta' ) }}
             </div>
 
             {!! Form::close() !!}

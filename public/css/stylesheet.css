@@ -15,7 +15,27 @@
     --primaryColor: rgb(0,100,150);
     --secondaryColor: rgb(240,240,240);
     --contrastPrimaryColor: #fff;
+
+    --danger: #dc3545;
 }
+
+/**
+ * ===================================================================== +
+ * Stylesheet to Colors Controls
+ * ===================================================================== +
+ */
+.bg-danger { background-color: var( --danger ) !important; color: #fff !; }
+.bg-danger:hover { color: var( --danger ) !important; background-color: #fff !important; border-color: var( --danger ) !important; }
+
+
+
+/**
+ * ===================================================================== +
+ * Stylesheet to Asign User from Login
+ * ===================================================================== +
+ */
+.fullscren { width: 100% !important; }
+
 
 /**
  * ===================================================================== +
@@ -56,6 +76,8 @@
 
     margin-bottom: 10px;
 }
+
+form .label-login { width: 100%; padding: 0px; margin-bottom: 10px; }
 
 #main-view-container form div {
     text-align: center;
@@ -161,6 +183,9 @@
  * Stylesheet to Default Form
  * ===================================================================== +
  */
+
+form { height: auto; width: 100%; float: left;}
+
 form input,
 form select {
     float: left;
@@ -262,3 +287,19 @@ table tbody tr td { height: 20px; }
 
 .btn-upgrade label { background-color: rgb(0,100,150); }
 .btn-downgrade label { background-color: #dc3545; }
+
+table thead tr td,
+table thead tr td { width: 10px !important; }
+
+
+
+
+
+
+
+
+
+
+
+
+
