@@ -38,12 +38,25 @@ class ApiRequest
     public function getUserByID($id)
     {
         $response = $this->client->request('GET', $this->baseURI . "?external_id=" . $id);
-        return $response->getBody()->getContents();
+        return json_decode( $response->getBody()->getContents() );
     }
 
     public function insertUser($data)
     {
-        $response = $this->client->request('POST', $this->baseURI, [
+        return $this->sendRequest('POST', $this->baseURI, $data );
+    }
+
+    public function updateUser($data, $id)
+    {
+        $apiUserID = $this->getUserByID($id);
+        $apiUserID = $apiUserID->data->id;
+
+        return $this->sendRequest('PUT', $this->baseURI . "/" . $apiUserID, $data);
+    }
+
+    private function sendRequest($method, $baseURI, $data)
+    {
+        $response = $this->client->request( $method, $baseURI, [
             'form_params' => [
                 'msisdn'        => $data->msisdn,
                 'name'          => $data->name,
@@ -53,6 +66,6 @@ class ApiRequest
             ]
         ]);
 
-        return $response->getBody()->getContents();
+        return json_decode( $response->getBody()->getContents() );
     }
 }
